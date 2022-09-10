@@ -17,12 +17,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var Ascore: TextView
     private lateinit var Bscore: TextView
     private lateinit var winner:TextView
-    var scoreA = 0
-    var scoreB = 0
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val resetter =findViewById<Button>(R.id.resetter)
+    private var scoreA = 0
+    private var scoreB = 0
+    private fun initializeviews(){val resetter =findViewById<Button>(R.id.resetter)
         val Afree=findViewById<Button>(R.id.teamA_1)
         val Apoints2=findViewById<Button>(R.id.teamA_2)
         val Apoints3=findViewById<Button>(R.id.teamA_3)
@@ -34,6 +31,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val winner=findViewById<TextView>(R.id.winner)
         Ascore.setText(scoreA)
         Bscore.setText(scoreB)
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        initializeviews()
     }
 
     override fun onClick(p0: View?) {
