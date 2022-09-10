@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/teamA"
         android:layout_width="200dp"
@@ -15,7 +14,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="80dp" />
+        tools:layout_editor_absoluteY="99dp" />
 
     <TextView
         android:id="@+id/teamB"
@@ -25,7 +24,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="80dp" />
+        tools:layout_editor_absoluteY="99dp" />
 
     <TextView
         android:id="@+id/teamB_score"
@@ -131,7 +130,7 @@
         android:id="@+id/resetter"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="156dp"
         android:text="@string/resetter"
         app:layout_constraintRight_toRightOf="parent"
