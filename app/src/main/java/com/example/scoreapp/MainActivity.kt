@@ -4,55 +4,78 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var resetter: Button
-    private lateinit var Afree: Button
-    private lateinit var Apoints2: Button
-    private lateinit var Apoints3: Button
-    private lateinit var Bfree: Button
-    private lateinit var Bpoints2: Button
-    private lateinit var Bpoints3: Button
+class MainActivity : AppCompatActivity() {
+     private lateinit var resetter: Button
+     private lateinit var Afree: Button
+     private lateinit var Apoints2: Button
+     private lateinit var Apoints3: Button
+     private lateinit var Bfree: Button
+     private lateinit var Bpoints2: Button
+     private lateinit var Bpoints3: Button
     private lateinit var Ascore: TextView
     private lateinit var Bscore: TextView
     private lateinit var winner:TextView
     private var scoreA = 0
     private var scoreB = 0
-    private fun initializeviews(){val resetter =findViewById<Button>(R.id.resetter)
-        val Afree=findViewById<Button>(R.id.teamA_1)
-        val Apoints2=findViewById<Button>(R.id.teamA_2)
-        val Apoints3=findViewById<Button>(R.id.teamA_3)
-        val Bfree=findViewById<Button>(R.id.teamB_1)
-        val Bpoints2=findViewById<Button>(R.id.teamB_2)
-        val Bpoints3=findViewById<Button>(R.id.teamB_3)
-        val Ascore=findViewById<TextView>(R.id.teamA_score)
-        val Bscore=findViewById<TextView>(R.id.teamB_score)
-        val winner=findViewById<TextView>(R.id.winner)
-        Ascore.setText(scoreA)
-        Bscore.setText(scoreB)
+    private fun initializers(){
+        resetter =findViewById<Button>(R.id.resetter)
+        Afree=findViewById<Button>(R.id.teamA_1)
+        Apoints2=findViewById<Button>(R.id.teamA_2)
+        Apoints3=findViewById<Button>(R.id.teamA_3)
+        Bfree=findViewById<Button>(R.id.teamB_1)
+        Bpoints2=findViewById<Button>(R.id.teamB_2)
+        Bpoints3=findViewById<Button>(R.id.teamB_3)
+        Ascore=findViewById<TextView>(R.id.teamA_score)
+        Bscore=findViewById<TextView>(R.id.teamB_score)
+        winner=findViewById<TextView>(R.id.winner)
+    }
+    private fun updateScores(){
+        Ascore.text=scoreA.toString()
+        Bscore.text=scoreB.toString()
+
+        if(scoreA-scoreB>=20)winner.text=getString(R.string.teamAwins)
+        else if (scoreA-scoreB<=-20)winner.text=getString(R.string.teamBwins)
+        else winner.text=null
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initializeviews()
-    }
-
-    override fun onClick(p0: View?) {
-        when (p0?.id){
-            Afree.id -> ++scoreA
-            Bfree.id -> ++scoreB
-            Apoints2.id -> scoreA+=2
-            Bpoints2.id -> scoreB+=2
-            Apoints3.id ->scoreA+=3
-            Bpoints3.id ->scoreB+=3
-            resetter.id ->{
-                scoreA=0
-                scoreB=0
-            }
-        }
+        initializers()
         Ascore.text=scoreA.toString()
-        Ascore.text=scoreB.toString()
+        Bscore.text=scoreB.toString()
+        Afree.setOnClickListener{
+            ++scoreA
+            updateScores();
+        }
+        Apoints2.setOnClickListener {
+            scoreA+=2
+            updateScores();
+        }
+        Apoints3.setOnClickListener {
+            scoreA+=3
+            updateScores();
+        }
+        Bfree.setOnClickListener {
+            ++scoreB
+            updateScores();
+        }
+        Bpoints2.setOnClickListener {
+            scoreB+=2
+            updateScores()
+        }
+
+        Bpoints3.setOnClickListener {
+            scoreB+=3
+            updateScores()
+        }
+        resetter.setOnClickListener {
+            scoreA=0
+            scoreB=0
+            updateScores()
+        }
     }
     }
 

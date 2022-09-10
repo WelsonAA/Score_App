@@ -8,6 +8,4 @@
     <string name="teamB">Team B</string>
     <string name="teamAwins">Team A won</string>
     <string name="teamBwins">Team B won</string>
-    <string name="teamAscore">0</string>
-    <string name="teamBscore">0</string>
 </resources>
