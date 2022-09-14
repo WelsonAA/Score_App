@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ScoreApp/app/src/main/res/layout/activity_main.xml" value="0.35989583333333336" />
+        <entry key="..\:/ScoreApp/app/src/main/res/layout/score_board.xml" value="0.24583333333333332" />
+        <entry key="..\:/ScoreApp/app/src/main/res/layout/winner_activity.xml" value="0.1" />
       </map>
     </option>
   </component>

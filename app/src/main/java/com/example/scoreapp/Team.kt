@@ -8,6 +8,10 @@ public class Team(private var teamName: String, private var teamScore:Int=0) : P
     fun setTeamScore(teamScore: Int){
         this.teamScore=teamScore
     }
-    fun getTeamName():String{return this.teamName}
-    fun getTeamScore():Int{return this.teamScore}
+    fun getTeamName():String{
+        return this.teamName
+    }
+    fun getTeamScore():Int{
+        return this.teamScore
+    }
     }
