@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    var teamA=Team("A")
+    var teamB=Team("B")
      private lateinit var resetter: Button
      private lateinit var Afree: Button
      private lateinit var Apoints2: Button
@@ -18,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var Ascore: TextView
     private lateinit var Bscore: TextView
     private lateinit var winner:TextView
-    private var scoreA = 0
-    private var scoreB = 0
+    //private var scoreA = 0
+    //private var scoreB = 0
     private fun initializers(){
         resetter =findViewById<Button>(R.id.resetter)
         Afree=findViewById<Button>(R.id.teamA_1)
@@ -33,47 +35,47 @@ class MainActivity : AppCompatActivity() {
         winner=findViewById<TextView>(R.id.winner)
     }
     private fun updateScores(){
-        Ascore.text=scoreA.toString()
-        Bscore.text=scoreB.toString()
+        Ascore.text=teamA.getTeamScore().toString()
+        Bscore.text=teamB.getTeamScore().toString()
 
-        if(scoreA-scoreB>=20)winner.text=getString(R.string.teamAwins)
-        else if (scoreA-scoreB<=-20)winner.text=getString(R.string.teamBwins)
+        if(teamA.getTeamScore()-teamB.getTeamScore()>=20)winner.text=getString(R.string.teamAwins)
+        else if (teamA.getTeamScore()-teamB.getTeamScore()<=-20)winner.text=getString(R.string.teamBwins)
         else winner.text=null
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializers()
-        Ascore.text=scoreA.toString()
-        Bscore.text=scoreB.toString()
+        Ascore.text=teamA.getTeamScore().toString()
+        Bscore.text=teamB.getTeamScore().toString()
         Afree.setOnClickListener{
-            ++scoreA
+            teamA.setTeamScore(1+teamA.getTeamScore())
             updateScores();
         }
         Apoints2.setOnClickListener {
-            scoreA+=2
+            teamA.setTeamScore(2+teamA.getTeamScore())
             updateScores();
         }
         Apoints3.setOnClickListener {
-            scoreA+=3
+            teamA.setTeamScore(3+teamA.getTeamScore())
             updateScores();
         }
         Bfree.setOnClickListener {
-            ++scoreB
+            teamB.setTeamScore(1+teamB.getTeamScore())
             updateScores();
         }
         Bpoints2.setOnClickListener {
-            scoreB+=2
+            teamB.setTeamScore(2+teamB.getTeamScore())
             updateScores()
         }
 
         Bpoints3.setOnClickListener {
-            scoreB+=3
+            teamB.setTeamScore(3+teamB.getTeamScore())
             updateScores()
         }
         resetter.setOnClickListener {
-            scoreA=0
-            scoreB=0
+            teamA.setTeamScore(0)
+            teamB.setTeamScore(0)
             updateScores()
         }
     }
