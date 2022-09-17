@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/winnertext"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="400dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="100dp"

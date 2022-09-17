@@ -3,6 +3,7 @@ package com.example.scoreapp
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -40,12 +41,14 @@ class MainActivity : AppCompatActivity() {
         Bscore.text = teamB.getTeamScore().toString()
 
         if (teamA.getTeamScore() - teamB.getTeamScore() >= 20){
-            val intent= Intent(this,WinnerActivity::class.java)
+            val intent= Intent(this,MainActivity2::class.java)
             winner.text =getString(R.string.teamAwins)
+            Log.d("not in winner","Not in Winner")
             intent.putExtra("winner",teamA)
-            startActivity(intent)}
+            startActivity(intent)
+        }
         else if (teamA.getTeamScore() - teamB.getTeamScore() <= -20) {
-            val intent= Intent(this,WinnerActivity::class.java)
+            val intent= Intent(this,MainActivity2::class.java)
             winner.text = getString(R.string.teamBwins)
             intent.putExtra("winner",teamB)
             startActivity(intent)
